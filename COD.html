@@ -125,9 +125,9 @@ var score_txt = new sjs.Text("Score: 0", 21, "orange");
 
 sjs.onHit("player","enemy", function(x,y){
 if(x.getWidth() > y.getWidth() && x.getHeight() > y.getHeight()) {  
-score = score + 5;
+score = score + 1;
 score_txt.setText("Score: "+score);
-localStorage.setItem("score", score); 
+localStorage.setItem("score", score);  
 x.grow(10,5);
 if(score >= 100){   
 window.location = "winner.html";   

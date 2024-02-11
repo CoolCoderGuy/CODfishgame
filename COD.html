@@ -27,13 +27,13 @@ toggle = true;
 }); //end keyDown function
  
 
-var background = new sjs.Image("background.png");
+var background = new sjs.Image("background.png"); 
 background.setSize(sjs.getWidth(), sjs.getHeight());
-//Player Properties 
+//Player Properties below here
 var player = new sjs.Image("SHARKL.png"); 
 player.type = "player";
 player.setSize(100,50);
-player.friction = .4; 
+player.friction = .3; 
 player.accel = .3;
 //Controls
 sjs.keyDown(D_KEY, function(){
@@ -131,7 +131,10 @@ x.grow(10,5);
 if(score >= 100){    
 window.location = "winner.html";    
 }
-} else {
+if(score >= 50)  
+player.friction = .4; 
+player.accel = .2; }  
+else { 
 x.destroy();
 window.location = "gameover.html"; 
 }
@@ -144,6 +147,6 @@ y.destroy();
 <body onload="start()">
 <h1> COD The Fish Game! </h1>  
 
-<div id="target" style="margin:auto;background:grey;"></div> 
+<div id="target" style="margin:auto;background:grey;"></div>
 </body>
 </html>         

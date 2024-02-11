@@ -20,7 +20,7 @@ playM.pause();
 musicOn = false;
 }
 toggle = false;
-setTimeout(function(){
+setTimeout(function(){  
 toggle = true;
 },1000);
 } //end if toggle statement
@@ -29,11 +29,11 @@ toggle = true;
 
 var background = new sjs.Image("background.png");
 background.setSize(sjs.getWidth(), sjs.getHeight());
-//Player Properties below here
+//Player Properties 
 var player = new sjs.Image("SHARKL.png"); 
 player.type = "player";
 player.setSize(100,50);
-player.friction = .5; 
+player.friction = .4; 
 player.accel = .3;
 //Controls
 sjs.keyDown(D_KEY, function(){
@@ -69,25 +69,24 @@ player.pushUp();
 sjs.keyDown(DOWN_KEY, function(){  
 player.pushDown(); 
 });
-
-//Power up
+//Mine
 setInterval(function(){
 var x = Math.floor(Math.random() * 783);
 var y = Math.floor(Math.random() * 470);
-var powerUp = new sjs.Image("MINE.png");     
+var powerUp = new sjs.Image("MINE.png");    
 powerUp.type = "powerUp";
 powerUp.setGravity();
-powerUp.setSize(50,50); 
+powerUp.setSize(50,50);  
 powerUp.noBounds = true; 
 powerUp.moveTo(x, y);  
 }, 5000);
- sjs.onHit("powerUp","bottom_screen",function(x,y){
+ sjs.onHit("powerUp","bottom_screen",function(x,y){ 
 x.destroy();  
 });
 sjs.onHit("player","powerUp",function(x,y){    
-x.grow(-60,-30);  
+x.grow(-60,-30); 
 y.destroy();
-});   
+}); 
 //Enemies
 setInterval(function(){
 var speed = Math.round(1 + Math.random()*10);
@@ -99,7 +98,7 @@ enemy.noBounds = true;
 enemy.friction = 0;
 enemy.pushRight(speed);
 enemy.scaleSize(.5 + Math.random() * 1.2);
-enemy.moveTo(-enemy.getWidth(), Math.random()*(enemy.getClamp().y));     
+enemy.moveTo(-enemy.getWidth(), Math.random()*(enemy.getClamp().y));       
 }else {
 var enemy = new sjs.Image("CODL.png"); 
 enemy.type = "enemy";
@@ -127,15 +126,14 @@ sjs.onHit("player","enemy", function(x,y){
 if(x.getWidth() > y.getWidth() && x.getHeight() > y.getHeight()) {  
 score = score + 1;
 score_txt.setText("Score: "+score);
-localStorage.setItem("score", score);  
+localStorage.setItem("score", score); 
 x.grow(10,5);
-if(score >= 100){   
-window.location = "winner.html";   
+if(score >= 100){    
+window.location = "winner.html";    
 }
-
-} else { 
+} else {
 x.destroy();
-window.location = "gameover.html";  
+window.location = "gameover.html"; 
 }
 y.destroy(); 
 });
@@ -146,6 +144,6 @@ y.destroy();
 <body onload="start()">
 <h1> COD The Fish Game! </h1>  
 
-<div id="target" style="margin:auto;background:grey;"></div>
+<div id="target" style="margin:auto;background:grey;"></div> 
 </body>
 </html>         

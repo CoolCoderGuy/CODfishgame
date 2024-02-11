@@ -119,27 +119,27 @@ x.destroy();
 });
 
 //Score
-var score = 0;
-var score_txt = new sjs.Text("Score: 0", 21, "orange");
 
+ var score = 0;
+var score_txt = new sjs.Text("Score: 0", 21, "orange");
 sjs.onHit("player","enemy", function(x,y){
 if(x.getWidth() > y.getWidth() && x.getHeight() > y.getHeight()) {  
-score = score + 1;
+score = score + 5;
 score_txt.setText("Score: "+score);
-localStorage.setItem("score", score); 
+localStorage.setItem("score", score);  
 x.grow(10,5);
-if(score >= 100){    
-window.location = "winner.html";    
+if(score >= 100){   
+window.location = "winner.html";   
 }
 if(score >= 50)  
 player.friction = .4; 
-player.accel = .2;    
+player.accel = .2;   
 if(score >= 75)  
 player.friction = .5; 
-player.accel = .1; 
-} else {  
+player.accel = .1;
+} else { 
 x.destroy();
-window.location = "gameover.html"; 
+window.location = "gameover.html";  
 }
 y.destroy(); 
 });

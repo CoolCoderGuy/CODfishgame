@@ -128,12 +128,12 @@ score = score + 1;
 score_txt.setText("Score: "+score);
 localStorage.setItem("score", score); 
 x.grow(10,5);
-if(score >= 100){    
+if(score >= 50){    
 window.location = "winner.html";    
 }
-if(score >= 50)  
+if(score >= 25)  
 player.friction = .4; 
-player.accel = .2; }  
+player.accel = .2; }   
 else { 
 x.destroy();
 window.location = "gameover.html"; 
